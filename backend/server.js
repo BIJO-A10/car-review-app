@@ -217,6 +217,90 @@ app.post('/api/cars', async (req, res) => {
   }
 });
 
+// PUT/update an existing car
+app.put('/api/cars/:id', async (req, res) => {
+  const { make, model, year, category, price, image, specs, description } = req.body;
+  const yearInt = parseInt(year);
+
+  // Validation
+  if (!make || typeof make !== 'string' || make.trim() === '') {
+    return res.status(400).json({ message: 'Make is required' });
+  }
+  if (!model || typeof model !== 'string' || model.trim() === '') {
+    return res.status(400).json({ message: 'Model is required' });
+  }
+  if (isNaN(yearInt) || yearInt < 1900 || yearInt > 2100) {
+    return res.status(400).json({ message: 'Valid year is required' });
+  }
+  if (!category || typeof category !== 'string' || category.trim() === '') {
+    return res.status(400).json({ message: 'Category is required' });
+  }
+  if (!price || typeof price !== 'string' || price.trim() === '') {
+    return res.status(400).json({ message: 'Price is required' });
+  }
+  if (!description || typeof description !== 'string' || description.trim() === '') {
+    return res.status(400).json({ message: 'Description is required' });
+  }
+  if (!specs || typeof specs !== 'object') {
+    return res.status(400).json({ message: 'Valid specs object is required' });
+  }
+  const { horsepower, acceleration, range_or_mpg, drivetrain } = specs;
+  if (!horsepower || !acceleration || !range_or_mpg || !drivetrain) {
+    return res.status(400).json({ message: 'All specifications (horsepower, acceleration, range/mpg, drivetrain) are required' });
+  }
+
+  const cars = await readCarsData();
+  const carIndex = cars.findIndex(c => c.id === req.params.id);
+
+  if (carIndex === -1) {
+    return res.status(404).json({ message: 'Car not found' });
+  }
+
+  // Update the car while preserving the reviews array!
+  cars[carIndex] = {
+    ...cars[carIndex],
+    make: make.trim(),
+    model: model.trim(),
+    year: yearInt,
+    category: category.trim(),
+    price: price.trim(),
+    image: image && image.trim() !== '' ? image.trim() : cars[carIndex].image,
+    specs: {
+      horsepower: horsepower.trim(),
+      acceleration: acceleration.trim(),
+      range_or_mpg: range_or_mpg.trim(),
+      drivetrain: drivetrain.trim()
+    },
+    description: description.trim()
+  };
+
+  try {
+    await writeCarsData(cars);
+    res.json(cars[carIndex]);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// DELETE a car
+app.delete('/api/cars/:id', async (req, res) => {
+  const cars = await readCarsData();
+  const carIndex = cars.findIndex(c => c.id === req.params.id);
+
+  if (carIndex === -1) {
+    return res.status(404).json({ message: 'Car not found' });
+  }
+
+  cars.splice(carIndex, 1);
+
+  try {
+    await writeCarsData(cars);
+    res.json({ message: 'Car deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 
 
 app.listen(PORT, () => {

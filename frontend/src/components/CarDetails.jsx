@@ -2,7 +2,7 @@ import React from 'react';
 import { X, Cpu, Gauge, Zap, Compass, MessageSquare, Plus } from 'lucide-react';
 import StarRating from './StarRating';
 
-export default function CarDetails({ car, onClose, onAddReviewClick }) {
+export default function CarDetails({ car, onClose, onAddReviewClick, onEditClick, onDeleteClick }) {
   if (!car) return null;
 
   const { make, model, year, category, price, image, rating, reviewCount, specs, description, reviews = [] } = car;
@@ -27,7 +27,23 @@ export default function CarDetails({ car, onClose, onAddReviewClick }) {
             <span className="details-category">{category}</span>
             <div className="details-title-row">
               <h2 className="details-name">{make} {model}</h2>
-              <span className="details-price">Starting at {price}</span>
+              <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                <button 
+                  className="btn btn-secondary" 
+                  onClick={onEditClick} 
+                  style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem', backgroundColor: 'rgba(255,255,255,0.1)', color: '#ffffff', borderColor: 'rgba(255,255,255,0.2)' }}
+                >
+                  Edit Info
+                </button>
+                <button 
+                  className="btn" 
+                  onClick={() => { if(confirm(`Are you sure you want to delete the ${make} ${model}?`)) onDeleteClick(car.id); }} 
+                  style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem', backgroundColor: 'rgba(239, 68, 68, 0.2)', color: '#f87171', border: '1px solid rgba(239, 68, 68, 0.3)' }}
+                >
+                  Delete
+                </button>
+                <span className="details-price" style={{ marginLeft: '0.5rem' }}>Starting at {price}</span>
+              </div>
             </div>
           </div>
         </div>

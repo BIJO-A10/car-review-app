@@ -4,6 +4,7 @@ import CarCard from './components/CarCard';
 import CarDetails from './components/CarDetails';
 import ReviewForm from './components/ReviewForm';
 import AddCarForm from './components/AddCarForm';
+import EditCarForm from './components/EditCarForm';
 import './App.css';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
@@ -22,6 +23,7 @@ export default function App() {
   const [selectedCar, setSelectedCar] = useState(null);
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [showAddCarForm, setShowAddCarForm] = useState(false);
+  const [showEditCarForm, setShowEditCarForm] = useState(false);
 
   // Categories and Makes list for dropdowns (could also be fetched, but defined here for simplicity)
   const categories = ['Electric Sedan', 'Sports Car', 'Electric SUV', 'Off-road SUV'];
@@ -104,6 +106,44 @@ export default function App() {
     }
 
     // Refresh cars list to update grid catalog
+    await fetchCars();
+  };
+
+  // Handle car deletion
+  const handleDeleteCar = async (carId) => {
+    const response = await fetch(`${API_BASE_URL}/cars/${carId}`, {
+      method: 'DELETE'
+    });
+
+    if (!response.ok) {
+      const errData = await response.json();
+      throw new Error(errData.message || 'Failed to delete car');
+    }
+
+    setSelectedCar(null);
+    await fetchCars();
+  };
+
+  // Handle edit car submission
+  const handleEditCarSubmit = async (updatedCarData) => {
+    if (!selectedCar) return;
+
+    const response = await fetch(`${API_BASE_URL}/cars/${selectedCar.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedCarData)
+    });
+
+    if (!response.ok) {
+      const errData = await response.json();
+      throw new Error(errData.message || 'Failed to update car details');
+    }
+
+    // Refresh details to show edited specifications
+    await fetchCarDetails(selectedCar.id);
+    // Refresh cars list to update grid
     await fetchCars();
   };
 
@@ -235,6 +275,8 @@ export default function App() {
           car={selectedCar}
           onClose={() => setSelectedCar(null)}
           onAddReviewClick={() => setShowReviewForm(true)}
+          onEditClick={() => setShowEditCarForm(true)}
+          onDeleteClick={handleDeleteCar}
         />
       )}
 
@@ -252,6 +294,15 @@ export default function App() {
         <AddCarForm
           onClose={() => setShowAddCarForm(false)}
           onSubmit={handleAddCarSubmit}
+        />
+      )}
+
+      {/* Edit Car Modal */}
+      {showEditCarForm && selectedCar && (
+        <EditCarForm
+          car={selectedCar}
+          onClose={() => setShowEditCarForm(false)}
+          onSubmit={handleEditCarSubmit}
         />
       )}
     </div>
