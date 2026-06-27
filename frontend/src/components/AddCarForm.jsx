@@ -46,7 +46,7 @@ export default function AddCarForm({ onSubmit, onClose }) {
         model: model.trim(),
         year: parseInt(year),
         category,
-        price: price.trim().startsWith('$') ? price.trim() : `$${price.trim()}`,
+        price: price.trim().startsWith('₹') ? price.trim() : `₹ ${price.trim()}`,
         image: image.trim(),
         specs: {
           horsepower: horsepower.trim(),
@@ -149,7 +149,7 @@ export default function AddCarForm({ onSubmit, onClose }) {
                   className="form-input"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
-                  placeholder="e.g., 89,900"
+                  placeholder="e.g., 75,00,000"
                   required
                 />
               </div>
