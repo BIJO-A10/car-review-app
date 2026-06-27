@@ -1,0 +1,163 @@
+[
+  {
+    "id": "tesla-model-s",
+    "make": "Tesla",
+    "model": "Model S",
+    "year": 2024,
+    "category": "Electric Sedan",
+    "price": "$89,990",
+    "image": "/images/tesla_model_s.jpg",
+    "specs": {
+      "horsepower": "670 hp",
+      "acceleration": "3.1s (0-60 mph)",
+      "range_or_mpg": "405 miles range",
+      "drivetrain": "Dual-Motor AWD"
+    },
+    "description": "The Tesla Model S sets the benchmark for modern electric luxury. With blistering acceleration, a minimalist glass-cockpit interior, and industry-leading range, it blends high-tech convenience with sports-car performance.",
+    "reviews": [
+      {
+        "id": "t1",
+        "user": "Sophia Chen",
+        "rating": 5,
+        "title": "Outstanding daily driver and tech marvel",
+        "comment": "The tech is unmatched. Autopilot works beautifully on my daily highway commute, and the range is as advertised. Acceleration is absolutely addictive, even in the non-Plaid model.",
+        "date": "2026-06-12"
+      },
+      {
+        "id": "t2",
+        "user": "David Miller",
+        "rating": 4,
+        "title": "Great performance, but build quality could be tighter",
+        "comment": "Mechanically and digitally, the car is incredible. However, for a $90k vehicle, I expected slightly better panel alignment and less wind noise at high speeds. Still, zero regrets.",
+        "date": "2026-05-28"
+      }
+    ]
+  },
+  {
+    "id": "porsche-911",
+    "make": "Porsche",
+    "model": "911 Carrera",
+    "year": 2024,
+    "category": "Sports Car",
+    "price": "$114,400",
+    "image": "/images/porsche_911.jpg",
+    "specs": {
+      "horsepower": "379 hp",
+      "acceleration": "4.0s (0-60 mph)",
+      "range_or_mpg": "20 mpg combined",
+      "drivetrain": "Rear-Wheel Drive"
+    },
+    "description": "Widely regarded as the ultimate everyday sports car, the Porsche 911 offers unparalleled handling precision, timeless design, and a rear-mounted twin-turbo flat-six engine that connects the driver to the road like nothing else.",
+    "reviews": [
+      {
+        "id": "r_1782537240616",
+        "user": "aravind",
+        "rating": 5,
+        "title": "performance",
+        "comment": "awesome",
+        "date": "2026-06-27"
+      },
+      {
+        "id": "p1",
+        "user": "Marcus Vance",
+        "rating": 5,
+        "title": "The pinnacle of driving dynamics",
+        "comment": "There is no other car that balances daily usability and pure track performance like the 911. The steering feedback is telepathic, and the PDK gearbox shifts instantly. Perfection.",
+        "date": "2026-06-20"
+      },
+      {
+        "id": "p2",
+        "user": "Elena Rostova",
+        "rating": 5,
+        "title": "A timeless masterpiece",
+        "comment": "This is my third 911, and Porsche keeps refining what is already perfect. The interior controls are high-quality, and the cockpit is surprisingly comfortable for long road trips.",
+        "date": "2026-06-02"
+      }
+    ]
+  },
+  {
+    "id": "mustang-mach-e",
+    "make": "Ford",
+    "model": "Mustang Mach-E",
+    "year": 2024,
+    "category": "Electric SUV",
+    "price": "$42,995",
+    "image": "/images/ford_mustang.jpg",
+    "specs": {
+      "horsepower": "346 hp",
+      "acceleration": "4.8s (0-60 mph)",
+      "range_or_mpg": "310 miles range",
+      "drivetrain": "eAWD"
+    },
+    "description": "Combining pony-car inspiration with family-friendly practicality, the Mustang Mach-E features an athletic chassis, a spacious high-tech cabin, and impressive range, making electric SUV ownership genuinely fun.",
+    "reviews": [
+      {
+        "id": "m1",
+        "user": "Tyler Jenkins",
+        "rating": 4,
+        "title": "Fun to drive and very practical",
+        "comment": "Lots of room for the kids and groceries, yet it handles corners much better than other electric crossovers. The infotainment screen is massive and easy to navigate.",
+        "date": "2026-06-18"
+      },
+      {
+        "id": "m2",
+        "user": "Claire Watson",
+        "rating": 4,
+        "title": "Sleek look, slightly firm ride",
+        "comment": "I love the aggressive styling and the panoramic roof. The ride is on the sportier/firmer side, which is fine for me but might feel stiff for passenger comfort on bumpy roads.",
+        "date": "2026-05-10"
+      }
+    ]
+  },
+  {
+    "id": "defender-110",
+    "make": "Land Rover",
+    "model": "Defender 110",
+    "year": 2024,
+    "category": "Off-road SUV",
+    "price": "$60,600",
+    "image": "/images/defender.jpg",
+    "specs": {
+      "horsepower": "296 hp",
+      "acceleration": "6.7s (0-60 mph)",
+      "range_or_mpg": "18 mpg combined",
+      "drivetrain": "AWD with Terrain Response"
+    },
+    "description": "Reimagined for the 21st century, the Land Rover Defender combines legendary off-road capability with luxury road manners. Its rugged cabin, advanced air suspension, and go-anywhere capability make it the ultimate explorer.",
+    "reviews": [
+      {
+        "id": "d1",
+        "user": "James O'Connor",
+        "rating": 5,
+        "title": "Conquers everything, looks beautiful doing it",
+        "comment": "Took it up to the Rocky Mountains during a heavy snowstorm, and it was unstoppable. The interior is extremely rugged yet comfortable, and the air suspension floats over rocks.",
+        "date": "2026-06-14"
+      },
+      {
+        "id": "d2",
+        "user": "Nadia Patel",
+        "rating": 3,
+        "title": "Capable, but plagued by minor electrical glitches",
+        "comment": "Off-roading is a dream, and the road presence is unmatched. However, the infotainment screen sometimes freezes, and we had a minor sensor error in the first month. Dealer fixed it, but frustrating.",
+        "date": "2026-06-01"
+      }
+    ]
+  },
+  {
+    "id": "audi-e-tron-2024",
+    "make": "Audi",
+    "model": "e-tron GT",
+    "year": 2024,
+    "category": "Electric Sedan",
+    "price": "$106,500",
+    "image": "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=600&q=80",
+    "specs": {
+      "horsepower": "522 hp",
+      "acceleration": "3.9s (0-60 mph)",
+      "range_or_mpg": "238 miles range",
+      "drivetrain": "quattro AWD"
+    },
+    "description": "The Audi e-tron GT is a grand tourer that combines zero-emission driving with high luxury performance. Featuring rapid charging capabilities, sophisticated dynamics, and a premium cabin.",
+    "reviews": []
+  }
+]
